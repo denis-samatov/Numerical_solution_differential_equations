@@ -47,15 +47,23 @@ pip install numpy matplotlib pandas
 
 1. **Euler Method:**
    - Simple and straightforward, but may accumulate errors over time.
-
+  
+     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_1.png)
+     
 2. **Modified Euler Method:**
    - Improved version of the Euler method, providing better accuracy.
 
+     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_2.png)
+     
 3. **Runge-Kutta Method:**
    - Fourth-order accurate method, generally more accurate than Euler and Modified Euler.
+  
+     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_3.png)
 
 4. **Adams-Multon Method:**
    - Multistep method known for its accuracy and efficiency.
+  
+     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_4.png)
 
 ## Disclaimer
 
