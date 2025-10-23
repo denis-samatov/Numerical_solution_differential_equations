@@ -4,71 +4,64 @@ This Python script provides a comparative analysis of various numerical methods 
 
 ## Overview
 
-1. **Numerical Methods Implemented:**
-   - Euler Method
-   - Modified Euler Method
-   - Runge-Kutta Method
-   - Adams-Multon Method
+This project implements and compares four common numerical methods for solving ODEs:
 
-2. **Analytical Solution:**
-   - The script defines the exact solution of the ODE to compare the numerical solutions.
+*   **Euler Method**: A first-order numerical procedure for solving ODEs with a given initial value. It is the most basic explicit method for numerical integration of ordinary differential equations.
+*   **Modified Euler Method**: An improvement over the basic Euler method, this second-order method provides better accuracy by using a predictor-corrector approach.
+*   **Runge-Kutta Method**: A fourth-order method that is widely used for its accuracy and stability. It involves calculating four different slopes at each step to approximate the solution.
+*   **Adams-Multon Method**: A multi-step method known for its high accuracy and efficiency, particularly for smooth problems. It uses a combination of explicit and implicit steps to achieve better results.
 
-3. **Visualization:**
-   - The script utilizes the `matplotlib` library to create plots that compare the numerical solutions with the exact solution.
-   - It also generates plots showcasing the absolute errors of each numerical method.
-
-4. **Data Output:**
-   - The script outputs the results in tabular format, providing a detailed view of the solutions and absolute errors at each step.
+The script visualizes the results using `matplotlib`, generating plots that compare the numerical solutions with the exact solution and plots that show the absolute errors of each method. It also outputs the results in a tabular format for detailed analysis.
 
 ## How to Use
 
-1. **Input Parameters:**
-   - Set the initial conditions (`t0`, `x0`, `z0`) and the final time (`tn`) in the script.
-   - Adjust the step size `h` based on the desired level of accuracy.
+1.  **Installation**: Make sure you have the required Python libraries installed.
 
-2. **Run the Script:**
-   - Execute the script in a Python environment.
+    ```bash
+    pip install numpy matplotlib pandas
+    ```
 
-3. **Visualize Results:**
-   - Observe the generated plots to compare the numerical solutions with the exact solution and analyze the absolute errors.
+2.  **Input Parameters**: Open the `solve_DE.py` script and set the following parameters at the beginning of the file:
 
-4. **Review Data Tables:**
-   - The script outputs tabular data for a detailed examination of the solutions and absolute errors.
+    *   `t0`: Initial time
+    *   `x0`: Initial value of the function `x(t)`
+    *   `z0`: Initial value of the derivative `z(t) = x'(t)`
+    *   `tn`: Final time
+    *   `h`: Step size
 
-## Dependencies
+3.  **Running the Script**: Execute the script in a Python environment.
 
-Ensure you have the following Python libraries installed:
+    ```bash
+    python solve_DE.py
+    ```
 
-```bash
-pip install numpy matplotlib pandas
-```
+4.  **Viewing the Output**: The script will generate several plots:
+    *   A comparison of each numerical solution with the exact solution.
+    *   The absolute error for each numerical method.
+    *   A combined plot showing all numerical solutions against the exact solution.
 
-## Notes on Numerical Methods
+    Additionally, the script will print data tables with the exact solutions, numerical solutions, and absolute errors for each method.
 
-1. **Euler Method:**
-   - Simple and straightforward, but may accumulate errors over time.
-  
-     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_1.png)
-     
-2. **Modified Euler Method:**
-   - Improved version of the Euler method, providing better accuracy.
+## Code Structure
 
-     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_2.png)
-     
-3. **Runge-Kutta Method:**
-   - Fourth-order accurate method, generally more accurate than Euler and Modified Euler.
-  
-     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_3.png)
+The script is organized into several functions to improve modularity and readability:
 
-4. **Adams-Multon Method:**
-   - Multistep method known for its accuracy and efficiency.
-  
-     ![example image](https://github.com/denis-samatov/Numerical_solution_differential_equations/blob/main/img_4.png)
+*   `show_plot()`: Displays a plot comparing the exact solution with a single numerical method.
+*   `print_info()`: Prints the coordinates and solution values for a given method.
+*   `calc_absolute_error()`: Calculates the absolute error between the exact solution and a numerical solution.
+*   `create_only_plot_error()`: Displays a plot of the absolute error for a single numerical method.
+*   `show_all_plots()`: Displays a combined plot comparing all numerical solutions with the exact solution.
+*   `euler_method()`: Implements the Euler method for solving the ODE.
+*   `modified_euler_method()`: Implements the Modified Euler method.
+*   `runge_kutta_method()`: Implements the fourth-order Runge-Kutta method.
+*   `adams_multon_method()`: Implements the Adams-Multon method.
+
+The main part of the script initializes the parameters, calls the numerical methods, and then generates the plots and data tables.
 
 ## Disclaimer
 
-Results may vary based on the nature of the specific ODE and characteristics of the data. It is recommended to thoroughly review the generated plots and tables for a comprehensive understanding of the numerical solutions and errors.
+The accuracy of the numerical solutions may vary depending on the specific ODE, the step size `h`, and the chosen method. It is recommended to analyze the generated plots and tables to understand the behavior and limitations of each numerical method.
 
----
+## Contributing
 
-Feel free to customize the script and explore the behavior of different numerical methods in solving ODEs. If you have any questions or encounter issues, please refer to the documentation of the used libraries or seek assistance from relevant forums.
+Contributions are welcome! If you have any suggestions for improvements or new features, feel free to open an issue or submit a pull request.
