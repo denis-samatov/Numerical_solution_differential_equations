@@ -44,19 +44,42 @@ The script visualizes the results using `matplotlib`, generating plots that comp
 
 ## Code Structure
 
-The script is organized into several functions to improve modularity and readability:
+The four numerical methods live in [`numerical_methods.py`](numerical_methods.py), separate from the plotting/printing script, so they can be imported and tested on their own:
+
+*   `euler_method()`: Implements the Euler method for solving the ODE.
+*   `modified_euler_method()`: Implements the Modified Euler (Heun's / RK2 predictor-corrector) method.
+*   `runge_kutta_method()`: Implements the fourth-order Runge-Kutta method.
+*   `adams_moulton_method()`: Implements the Adams-Moulton method.
+*   `exact_solution()`: The known closed-form solution to the demonstration ODE.
+
+`solve_DE.py` imports these and adds the presentation layer:
 
 *   `show_plot()`: Displays a plot comparing the exact solution with a single numerical method.
 *   `print_info()`: Prints the coordinates and solution values for a given method.
 *   `calc_absolute_error()`: Calculates the absolute error between the exact solution and a numerical solution.
 *   `create_only_plot_error()`: Displays a plot of the absolute error for a single numerical method.
 *   `show_all_plots()`: Displays a combined plot comparing all numerical solutions with the exact solution.
-*   `euler_method()`: Implements the Euler method for solving the ODE.
-*   `modified_euler_method()`: Implements the Modified Euler method.
-*   `runge_kutta_method()`: Implements the fourth-order Runge-Kutta method.
-*   `adams_moulton_method()`: Implements the Adams-Moulton method.
 
 The main part of the script initializes the parameters, calls the numerical methods, and then generates the plots and data tables.
+
+## Tests
+
+`tests/test_convergence.py` empirically verifies each method's theoretical order of accuracy (Euler ≈ 1, Modified Euler ≈ 2, Runge-Kutta ≈ 4) by halving the step size and checking the global error shrinks by roughly the predicted factor. Run with:
+
+```bash
+pip install pytest
+PYTHONPATH=. pytest tests/
+```
+
+**Writing this test found and fixed a real bug**: the original `modified_euler_method` had its midpoint offsets for `x` and `z` swapped (both used `z`'s own derivative instead of each variable using the other's), which silently broke the method's defining second-order convergence -- the observed order was ~0.8, not ~2. It's fixed now (see the function's docstring and the git history for details), and the example plots below were regenerated after the fix.
+
+## Sample output
+
+Running `solve_DE.py` produces plots like these (from [`images/`](images/)):
+
+| Modified Euler vs. exact | All methods compared |
+|---|---|
+| ![Modified Euler](images/img_2.png) | ![Comparison of all methods](images/img_9.png) |
 
 ## Disclaimer
 
