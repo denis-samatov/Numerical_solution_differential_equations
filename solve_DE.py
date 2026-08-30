@@ -203,8 +203,8 @@ x[:4] = ans_rightDecision[:4]
 x_p[:4] = ans_rightDecision[:4]
 t[:4] = t_list[:4]
 
-def adams_multon_method(t, x, z, h, n):
-    """Solves the ODE using the Adams-Multon method.
+def adams_moulton_method(t, x, z, h, n):
+    """Solves the ODE using the Adams-Moulton method.
 
     Args:
         t (np.ndarray): An array of time points.
@@ -226,26 +226,26 @@ def adams_multon_method(t, x, z, h, n):
         x[i+1] = x[i] + h/24 * (9 * z_p[i+1] + 19 * z[i] - 5 * z[i-1] + z[i-2])
     return x.copy()
 
-ans_adamsMultonMethod = adams_multon_method(t.copy(), x.copy(), z.copy(), h, n)
-print_info(t_list, ans_adamsMultonMethod, name="Решение методом Адамса-Мультона")
-show_plot(t_list, ans_rightDecision, ans_adamsMultonMethod, labels=["Built-in method", "Adams-Multon method"], name="Решение методом Адамса-Мультона")
+ans_adamsMoultonMethod = adams_moulton_method(t.copy(), x.copy(), z.copy(), h, n)
+print_info(t_list, ans_adamsMoultonMethod, name="Решение методом Адамса-Мультона")
+show_plot(t_list, ans_rightDecision, ans_adamsMoultonMethod, labels=["Built-in method", "Adams-Moulton method"], name="Решение методом Адамса-Мультона")
 
 error_eulerMethod = calc_absolute_error(ans_rightDecision, ans_eulerMethod, n)
 error_modifiedEulerMethod = calc_absolute_error(ans_rightDecision, ans_modifiedEulerMethod, n)
 error_rungeKuttaMethod = calc_absolute_error(ans_rightDecision, ans_rungeKuttaMethod, n)
-error_adamsMultonMethod = calc_absolute_error(ans_rightDecision, ans_adamsMultonMethod, n);
+error_adamsMoultonMethod = calc_absolute_error(ans_rightDecision, ans_adamsMoultonMethod, n);
 
 create_only_plot_error(t_list, error = error_eulerMethod, labels =  "Euler method", name = "Абсолютная погрешность метода Эйлера")
 create_only_plot_error(t_list, error = error_modifiedEulerMethod, labels = "modified Euler method", name = "Абсолютная погрешность модифицированного методом Эйлер")
 create_only_plot_error(t_list, error = error_rungeKuttaMethod, labels = "Runge–Kutta method", name = "Абсолютная погрешность метода Рунге-Кутта")
-create_only_plot_error(t_list, error = error_adamsMultonMethod, labels = "Adams-Multon method", name = "Абсолютная погрешность метода Адамса-Мультона")
+create_only_plot_error(t_list, error = error_adamsMoultonMethod, labels = "Adams-Moulton method", name = "Абсолютная погрешность метода Адамса-Мультона")
 
 data = { 't': t_list,
         'Точное решение': ans_rightDecision,
         'Метод Эйлера': ans_eulerMethod,
         'Модифицированный метод Эйлера': ans_modifiedEulerMethod,
         'Метод Рунге-Кутта': ans_rungeKuttaMethod,
-        'Метод Адамса-Мультона': ans_adamsMultonMethod
+        'Метод Адамса-Мультона': ans_adamsMoultonMethod
         }
 np.round(pd.DataFrame(data), 4)
 
@@ -253,10 +253,10 @@ data = { 't': t_list,
         'Δ метод Эйлера': error_eulerMethod,
         'Δ модифицированный метод Эйлера': error_modifiedEulerMethod,
         'Δ метод Рунге-Кутта': error_rungeKuttaMethod,
-        'Δ метод Адамса-Мультона': error_adamsMultonMethod
+        'Δ метод Адамса-Мультона': error_adamsMoultonMethod
         }
 np.round(pd.DataFrame(data), 4)
 
-solutions = [ans_eulerMethod, ans_modifiedEulerMethod, ans_rungeKuttaMethod, ans_adamsMultonMethod]
+solutions = [ans_eulerMethod, ans_modifiedEulerMethod, ans_rungeKuttaMethod, ans_adamsMoultonMethod]
 labels = ['Точное решение', 'Метод Эйлера', 'Модифицированный метод Эйлера', 'Метод Рунге-Кутта', 'Метод Адамса-Мултона']
 show_all_plots(t_list, ans_rightDecision, solutions, labels, name='Сравнение решений')

@@ -1,6 +1,6 @@
 # Ordinary Differential Equations (ODE) Solver
 
-This Python script provides a comparative analysis of various numerical methods for solving ordinary differential equations (ODEs). The implemented methods include Euler method, Modified Euler method, Runge-Kutta method, and Adams-Multon method. The comparison is done against the exact solution of a sample ODE.
+This Python script provides a comparative analysis of various numerical methods for solving ordinary differential equations (ODEs). The implemented methods include Euler method, Modified Euler method, Runge-Kutta method, and Adams-Moulton method. The comparison is done against the exact solution of a sample ODE.
 
 ## Overview
 
@@ -9,7 +9,7 @@ This project implements and compares four common numerical methods for solving O
 *   **Euler Method**: A first-order numerical procedure for solving ODEs with a given initial value. It is the most basic explicit method for numerical integration of ordinary differential equations.
 *   **Modified Euler Method**: An improvement over the basic Euler method, this second-order method provides better accuracy by using a predictor-corrector approach.
 *   **Runge-Kutta Method**: A fourth-order method that is widely used for its accuracy and stability. It involves calculating four different slopes at each step to approximate the solution.
-*   **Adams-Multon Method**: A multi-step method known for its high accuracy and efficiency, particularly for smooth problems. It uses a combination of explicit and implicit steps to achieve better results.
+*   **Adams-Moulton Method**: A multi-step method known for its high accuracy and efficiency, particularly for smooth problems. It uses a combination of explicit and implicit steps to achieve better results.
 
 The script visualizes the results using `matplotlib`, generating plots that compare the numerical solutions with the exact solution and plots that show the absolute errors of each method. It also outputs the results in a tabular format for detailed analysis.
 
@@ -54,7 +54,7 @@ The script is organized into several functions to improve modularity and readabi
 *   `euler_method()`: Implements the Euler method for solving the ODE.
 *   `modified_euler_method()`: Implements the Modified Euler method.
 *   `runge_kutta_method()`: Implements the fourth-order Runge-Kutta method.
-*   `adams_multon_method()`: Implements the Adams-Multon method.
+*   `adams_moulton_method()`: Implements the Adams-Moulton method.
 
 The main part of the script initializes the parameters, calls the numerical methods, and then generates the plots and data tables.
 
